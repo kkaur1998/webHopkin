@@ -1,8 +1,4 @@
-// const url='https://jsonplaceholder.typicode.com/todos';
-
-// fetch(url)
-// .then(response=>response.json())
-// .then(data=>console.log(data))
+const url='https://jsonplaceholder.typicode.com/todos';
 
 array=["hi","my","name","is","kk"]
 
@@ -65,18 +61,111 @@ function createFooter(){
 header.appendChild(createHeader())
 footer.appendChild(createFooter())
 
+//main element content
+
+
+
+fetch(url)
+.then(response=>response.json())
+.then(data=>{
+    list=[...data]
+    // list.forEach(element => {
+    //     var div= document.createElement('div')
+    //     div.innerhtml=`<h2>${element.title}</h2>`
+    //     main.appendChild(div)
+    //     console.log(element.title)
+    // });
+    showData(list);
+})
+
+function showData(list){
+    for ( i=0 ; i<list.length; i++){
+        CreateDivElement(list[i])
+    }
+}
+
+function CreateDivElement(i){
+    var div= document.createElement('div')
+        if(i.completed){
+            div.style='background-color: green; color: white; display: flex; align-items: center; padding: 1%; margin: 10px; color: white;'
+        }
+        else{
+            div.style='background-color: red; display: flex; color: white;  align-items: center; padding: 1%; margin: 10px; color: white;'
+        }
+        // div.innerhtml='<h2>'+list[i].title+'</h2>'
+        h1=document.createElement('h1')
+        button1=document.createElement('button')
+        button2=document.createElement('button')
+        button3=document.createElement('button')
+
+        h1.innerText=i.title
+        div.appendChild(h1)
+        
+        button1.className='Button'
+        button1.innerText='Mark as complete'
+        div.appendChild(button1)
+        
+        button2.className='Button'
+        button2.innerText='Edit'
+        div.appendChild(button2)
+
+        button3.className='Button'
+        button3.innerText='Delete'
+        div.appendChild(button3)
+
+        main.appendChild(div)
+
+        buttons=document.getElementsByClassName('Button')
+}
+
+
+
+
+
+
+
+
+
+
+main.style='height:auto; color: black;'
+
+
+
+
+
+
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+
 // console.log(document.getElementsByTagName('ul'))
 uls=document.getElementsByTagName('ul')
 
 
-for ( i=0 ; i<uls.length; i++){
-    uls[i].style='display:flex; list-style-type: none; justify-content: space-around; height: 50px; background-color: black; color: white; align-items: center; font-weight: bolder; font-size: larger; font-family: Georgia, serif;';
-}
+// for ( i=0 ; i<uls.length; i++){
+//     uls[i].style='display:flex; list-style-type: none; justify-content: space-around; height: 50px; background-color: black; color: white; align-items: center; font-weight: bolder; font-size: larger;';
+// }
 
-// uls.forEach((e) => {
+/*
+
+160
+
+parent.children is not an array. It is HTMLCollection and it does not have forEach method. You can convert it to the array first. For example in ES6:
+*/
+Array.from(uls).forEach(child=>{
+    console.log(child)
+    child.style='display:flex; list-style-type: none; justify-content: space-around; height: 50px; background-color: black; color: white; align-items: center; font-weight: bolder; font-size: larger; font-family: Georgia, serif;'
+    console.log(child)
+})
+
+//we can't directly use foreach with html collection
+
+// uls.forEach(e => {
 //     e.style='display:flex; list-style-type: none; justify-content: space-around; height: 50px; background-color: black; color: white; align-items: center; font-weight: bolder; font-size: larger; font-family: Georgia, serif;'
 //     console.log(e)
-// });
+// })
+
+
 
 
 // header.style='position-fixed; margin-top: 0px'
