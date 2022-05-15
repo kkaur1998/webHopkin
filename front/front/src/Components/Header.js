@@ -1,13 +1,13 @@
-import './Header.css'
+import './comps.css'
 function Header(){
     return(
         <div className='navbar'>
-                <a id='logo' href='#mekk'>MeKK</a>
-                <a href='#home'>Home</a>
-                <a href='#about'>About</a>
-                <a href='#skills'>SKills</a>
-                <a href='#education'>Education</a>
-                <a href='#contact'>Contact Me</a>
+                <a className='navitem' id='logo' href='#mekk'>MeKK</a>
+                <a className='navitem' href='#home'>Home</a>
+                <a className='navitem' href='#about'>About</a>
+                <a className='navitem' href='#skills'>SKills</a>
+                <a className='navitem' href='#education'>Education</a>
+                <a className='navitem' href='#contact'>Contact Me</a>
         </div>
     )
 }
